@@ -21,7 +21,7 @@ ARG FLUXCTL_URL="https://github.com/fluxcd/flux/releases/download/${FLUXCTL_VERS
 WORKDIR /root
 
 RUN apk -U --no-cache upgrade \
-    && apk add --no-cache ca-certificates bash git openssh-client
+    && apk add --no-cache ca-certificates bash git jq openssh-client
 RUN apk add --no-cache -t deps curl \
     && curl -L $KUBECTL_URL -o /usr/local/bin/kubectl \
     && echo "${KUBECTL_SHA256:-$(curl -sSL $KUBECTL_SHA256_URL)}  /usr/local/bin/kubectl" | sha256sum -c \
